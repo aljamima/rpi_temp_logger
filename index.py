@@ -5,6 +5,7 @@ import sys
 import cgi
 import cgitb
 
+
 # global variables
 speriod=(15*60)-1
 dbname='/var/www/html/templog.db'
