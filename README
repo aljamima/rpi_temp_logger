@@ -11,13 +11,6 @@ To view your own collected data, you should:
 1. Uncomment the lines that use 'now'
 2. Comment out the lines that have hardcoded dates
 
-The relevant lines are in `webgui.py`:
-- Line 45
-- Line 117
-- Line 122
-- Line 127
-- Line 148
-
 ## Features
 
 - Temperature data collection from DS18B20 sensor
@@ -74,18 +67,3 @@ The database contains a single table `temps` with the following columns:
 - `timestamp`: Date and time of the reading
 - `temp`: Temperature value
 
-## Notes
-
-- The system is designed to collect temperature readings every 15 minutes
-- Data is stored in a SQLite database for persistence
-- The web interface uses Google Charts for visualization
-- The system includes basic input validation to prevent SQL injection
-- Consider implementing data retention policies for the database
-
-## License
-
-[Add your preferred license here]
-
-## Author
-
-[Your Name]
