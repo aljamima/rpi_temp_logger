@@ -1,7 +1,91 @@
-Raspberry Pi Temperature Logger
-===============================
+# Raspberry Pi Temperature Logger
 
-This repo contains code for a Raspberry Pi temperature logger which uses SQLite to store data read from a DS18B20 sensor.  You can see more details here:
-http://raspberrywebserver.com/cgiscripting/rpi-temperature-logger/building-an-sqlite-temperature-logger.html
+This repository contains code for a Raspberry Pi temperature logger which uses SQLite to store data read from a DS18B20 sensor. For more detailed information about the project, visit:
+[Building an SQLite Temperature Logger](http://raspberrywebserver.com/cgiscripting/rpi-temperature-logger/building-an-sqlite-temperature-logger.html)
 
-In webgui.py, there are several lines that contain hardcoded dates so that you can use the script with the sample database provided.  There is an equivalent version of each of these lines that uses 'now' instead of a hardcoded timestamp.  If you want to view data you've collected yourself, you should uncomment the lines that use 'now', and comment out the lines that have a hardocded date. See webgui.py, lines 45, 117, 122, 127 and 148.
+## Important Note About Timestamps
+
+In `webgui.py`, there are several lines that contain hardcoded dates to allow the script to work with the sample database. Each of these lines has an equivalent version that uses 'now' instead of a hardcoded timestamp.
+
+To view your own collected data, you should:
+1. Uncomment the lines that use 'now'
+2. Comment out the lines that have hardcoded dates
+
+The relevant lines are in `webgui.py`:
+- Line 45
+- Line 117
+- Line 122
+- Line 127
+- Line 148
+
+## Features
+
+- Temperature data collection from DS18B20 sensor
+- Data storage in SQLite database
+- Web-based visualization using Google Charts
+- Real-time temperature statistics (min, max, average)
+- Configurable time intervals for data display (6, 12, or 24 hours)
+- Responsive web interface
+
+## Requirements
+
+- Raspberry Pi
+- DS18B20 temperature sensor
+- Python 2.x
+- SQLite3
+- Web server (Apache or similar)
+- Internet connection (for Google Charts)
+
+## Installation
+
+1. Clone this repository to your Raspberry Pi
+2. Ensure the web server is installed and configured
+3. Place the `webgui.py` file in your web server's CGI directory
+4. Create a configuration file for database settings
+5. Set appropriate permissions for the database file (recommended: 640)
+6. Ensure the web server user has read access to the database file
+
+## Security Considerations
+
+- Do not expose the web interface directly to the internet without proper security measures
+- Consider implementing authentication for the web interface
+- Keep the database file outside of the web root directory
+- Regularly backup the database file
+- Use HTTPS if exposing the interface over the internet
+- Consider implementing rate limiting to prevent abuse
+- Keep the system and all dependencies up to date
+
+## Usage
+
+1. Access the web interface through your web browser
+2. Select the desired time interval (6, 12, or 24 hours)
+3. View the temperature chart and statistics
+4. The page will automatically update with new data
+
+## File Structure
+
+- `webgui.py`: Main web interface script
+- `templog.db`: SQLite database storing temperature readings
+- `config.py`: Configuration file (create this to store database path and other settings)
+
+## Database Schema
+
+The database contains a single table `temps` with the following columns:
+- `timestamp`: Date and time of the reading
+- `temp`: Temperature value
+
+## Notes
+
+- The system is designed to collect temperature readings every 15 minutes
+- Data is stored in a SQLite database for persistence
+- The web interface uses Google Charts for visualization
+- The system includes basic input validation to prevent SQL injection
+- Consider implementing data retention policies for the database
+
+## License
+
+[Add your preferred license here]
+
+## Author
+
+[Your Name]
